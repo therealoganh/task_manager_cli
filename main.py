@@ -8,7 +8,7 @@ class Task:
 
     # Format task object output
     def __str__(self):
-        return f"Task: {self.name}, Duration: {self.duration}, Status {"Complete" if self.isComplete == True else "Incomplete"}"
+        return f"Task: {self.name}, Duration: {self.duration} hours, Status: {'Complete' if self.isComplete == True else 'Incomplete'}"
 
 
 # methods
@@ -17,7 +17,11 @@ def list_tasks(lst):
     
     # Validate argument
     if (len(lst) == 0 or lst == None):
-        
+        print("The task list is currently empty. Try adding a task first!")
+    else:
+        print("=== Tasks ===")
+        for task in lst:
+            print(task)
 
 # Task list
 task_list = []
@@ -30,10 +34,8 @@ task_list.append(dishes)
 
 
 def main():
-    print("Welcome to Task Manager CLI!")
+    print("\nWelcome to Task Manager CLI!")
     print("============================")
-    
-    print("Choose a menu option to get started:")
 
     # Loop logic
     while True:
@@ -51,12 +53,19 @@ def main():
             continue
 
         elif menu_choice == 1:
-
-
-
-
-
-
+            print()
+            list_tasks(task_list)
+            print()
+        elif menu_choice == 2:
+            pass
+        elif menu_choice == 3:
+            pass
+        elif menu_choice == 4:
+            pass
+        else:
+            print("Goodbye!")
+            return False
+            
 
 
 if __name__ == "__main__":
