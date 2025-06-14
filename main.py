@@ -1,3 +1,4 @@
+import sqlite3
 class Task:
 
     # initialize task class and properties
@@ -10,8 +11,25 @@ class Task:
     def __str__(self):
         return f"Task: {self.name}, Duration: {self.duration} hours, Status: {'Complete' if self.isComplete == True else 'Incomplete'}"
 
+# Database Methods
+def init_db():
+    print("Initializing database...")
+    conn = sqlite3.connect("tasks.sqlite3") # Creates the DB file if it does not exist
+    cursor = conn.cursor()
 
-# methods
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS tasks (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            duration INTEGER,
+            is_complete INTEGER DEFAULT 0
+        )
+    """)
+
+    conn.commit()
+    conn.close()
+
+# Menu Methods
 # List tasks method
 def list_tasks(lst):
     
@@ -34,6 +52,7 @@ task_list.append(dishes)
 
 
 def main():
+    init_db()
     print("\nWelcome to Task Manager CLI!")
     print("============================")
 
