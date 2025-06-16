@@ -38,3 +38,24 @@ def add_task(name, duration):
 
     conn.commit()
     conn.close()
+
+# Mark a task complete Method
+def mark_complete(id):
+    conn = sqlite3.connect("tasks.sqlite3")
+    cursor = conn.cursor()
+
+    cursor.execute("UPDATE tasks SET is_complete = 1 WHERE id = ?", (id,))
+
+    conn.commit()
+    conn.close()
+
+# Delete a task Method
+def delete_task(id):
+
+    conn = sqlite3.connect("tasks.sqlite3")
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM tasks WHERE id = ?", (id,))
+
+    conn.commit()
+    conn.close()
