@@ -1,9 +1,3 @@
 # Task Manager CLI
 
-A simple command-line task manager written in Python using SQLite for storage.
-
-## Features
-
-- Add, list, and delete tasks
-- Store tasks in an SQLite database
-- Command-line interface
+A Python-based command-line application to manage tasks, built using click for argument parsing and command routing. Demonstrates clean CLI design, persistent storage with SQLite, and modular code structure.
